@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from "../task.model";
+import {TaskService} from "../task.service";
 
 @Component({
-  selector: 'app-tasks-list',
-  templateUrl: './tasks-list.component.html',
-  styleUrls: ['./tasks-list.component.css']
+    selector: 'app-tasks-list',
+    templateUrl: './tasks-list.component.html',
+    styleUrls: ['./tasks-list.component.css'],
+    providers: [TaskService]
 })
 export class TasksListComponent implements OnInit {
 
     tasks: Task[] = [];
 
-    constructor() { }
+    constructor(private taskService: TaskService) { }
 
     // Task data initialization
     ngOnInit() {
-      this.tasks.push( new Task(1,"Task 1", true, "11/04/2019"));
-      this.tasks.push( new Task(2,"Task 2", false, "17/04/2019"));
-      this.tasks.push( new Task(3,"Task 3", false, "21/04/2019"));
+        return this.taskService.getTasks().subscribe(
+            (tasks: any[]) => {
+                this.tasks = tasks
+            },
+            (error) => console.log(error)
+        );
     }
 
     getDueDateLabel(task: Task){
