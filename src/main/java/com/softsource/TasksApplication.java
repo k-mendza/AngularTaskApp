@@ -1,7 +1,7 @@
 package com.softsource;
 
-import com.softsource.domain.Task;
-import com.softsource.service.TaskService;
+import com.softsource.domain.Event;
+import com.softsource.service.EventService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,10 +17,10 @@ public class TasksApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(TaskService taskService) {
+	CommandLineRunner eventRunner(EventService eventService) {
 		return args -> {
-			taskService.save( new Task(1L,"Task1", LocalDate.now(), true));
-			taskService.save( new Task(2L,"Task2", LocalDate.now(), false));
+			eventService.save(new Event(1L,"08:00", "Breakfast with Simon", "Lounge Cafe", "Discuss Q3 targets"));
+			eventService.save(new Event(2L,"08:30", "Daily Standup Meeting (recurring)", "Warsaw Spire Office", null));
 		};
 	}
 

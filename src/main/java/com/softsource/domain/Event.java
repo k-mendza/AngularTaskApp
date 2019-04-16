@@ -1,31 +1,25 @@
 package com.softsource.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class Task {
+public class Event {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String name;
-
-    @JsonFormat(pattern = "DD/MM/YYYY")
-    private LocalDate dueDate;
-
-    private Boolean completed;
-
-    public Task () {
-
-    }
+    private String time;
+    private String subject;
+    private String location;
+    private String description;
 }
