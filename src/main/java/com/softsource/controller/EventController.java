@@ -16,8 +16,11 @@ public class EventController {
 
     @GetMapping(value = {"", "/"})
     public Iterable<Event> getEventList() {
-        return eventService.list();
+        return this.eventService.list();
     }
+
+    @GetMapping("/getEventCount")
+    public long getEventCount() { return this.eventService.count(); }
 
     @PostMapping("/save")
     public Event saveEvent(@RequestBody Event event) {

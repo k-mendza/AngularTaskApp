@@ -11,4 +11,6 @@ public interface EventService {
     Event save(Event event);
 
     void delete(Event event);
+
+    long count();
 }
