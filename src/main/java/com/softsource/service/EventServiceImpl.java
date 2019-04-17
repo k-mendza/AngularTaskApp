@@ -23,4 +23,9 @@ public class EventServiceImpl implements EventService{
         return this.eventRepository.save(task);
     }
 
+    @Override
+    public void delete(Event event) {
+        this.eventRepository.delete(event);
+    }
+
 }

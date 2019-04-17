@@ -15,12 +15,17 @@ public class EventController {
     }
 
     @GetMapping(value = {"", "/"})
-    public Iterable<Event> list() {
+    public Iterable<Event> getEventList() {
         return eventService.list();
     }
 
     @PostMapping("/save")
-    public Event saveTask(@RequestBody Event task) {
-        return this.eventService.save(task);
+    public Event saveEvent(@RequestBody Event event) {
+        return this.eventService.save(event);
+    }
+
+    @PostMapping("/delete")
+    public void deleteEvent(@RequestBody Event event) {
+        this.eventService.delete(event);
     }
 }
