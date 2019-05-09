@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, OnChanges{
 
     // Tak się mapuje HttpClient.get() na obiekt
     getEvents() {
-        return this.eventService.getEvents().subscribe(
+        this.eventService.getEvents().subscribe(
             (events: Event[]) => {
                 this.events = events
             },
@@ -56,8 +56,6 @@ export class AppComponent implements OnInit, OnChanges{
 
         );
 
-        this.getEvents();
-
         this.timeInput.setValue('');
         this.subjectInput.setValue('');
         this.locationInput.setValue('');
@@ -66,6 +64,8 @@ export class AppComponent implements OnInit, OnChanges{
         this.addedEvent.emit(event);
 
         this.modal.hide();
+
+        this.getEvents();
     }
 
     deleteEvent(event: any) {

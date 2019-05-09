@@ -21,4 +21,8 @@ export class EventService {
   deleteEvent(event: Event) {
       return this.http.post('/api/events/delete', event);
   };
+
+  getEventCount() {
+      return this.http.get('/api/events/getEventCount');
+  }
 }

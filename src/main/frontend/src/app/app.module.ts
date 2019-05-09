@@ -7,11 +7,13 @@ import { EventComponent } from './components/event/event.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {EventService} from "./components/event/event.service";
+import { BasicAsideComponent } from './components/basic-aside/basic-aside.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         EventComponent,
+        BasicAsideComponent,
     ],
     imports: [
         BrowserModule,

@@ -28,4 +28,9 @@ public class EventServiceImpl implements EventService{
         this.eventRepository.delete(event);
     }
 
+    @Override
+    public long count() {
+        return this.eventRepository.count();
+    }
+
 }
