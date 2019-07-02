@@ -4,12 +4,11 @@ import { FormControl } from '@angular/forms';
 import { EventService } from "./components/event/event.service";
 import { Event } from "./components/event/event.model";
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers: [EventService]
+    providers: [ EventService ]
 })
 export class AppComponent implements OnInit{
     @ViewChild(ModalDirective) modal: ModalDirective;
@@ -46,9 +45,7 @@ export class AppComponent implements OnInit{
             this.descriptionInput.value
         );
 
-        this.eventService.saveEvent(event).subscribe(
-
-        );
+        this.eventService.saveEvent(event).subscribe();
 
         this.timeInput.setValue('');
         this.subjectInput.setValue('');
