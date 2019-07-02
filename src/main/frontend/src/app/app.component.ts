@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, EventEmitter, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { FormControl } from '@angular/forms';
 import { EventService } from "./components/event/event.service";
@@ -10,8 +10,10 @@ import { Event } from "./components/event/event.model";
     styleUrls: ['./app.component.scss'],
     providers: [ EventService ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnChanges{
     @ViewChild(ModalDirective) modal: ModalDirective;
+
+    @Output() addedEvent = new EventEmitter<Event>();
 
     constructor( private eventService: EventService ){};
 
@@ -23,6 +25,10 @@ export class AppComponent implements OnInit{
     descriptionInput = new FormControl();
 
     ngOnInit(){
+        this.getEvents();
+    }
+
+    ngOnChanges(){
         this.getEvents();
     }
 
@@ -51,6 +57,8 @@ export class AppComponent implements OnInit{
         this.subjectInput.setValue('');
         this.locationInput.setValue('');
         this.descriptionInput.setValue('');
+
+        this.addedEvent.emit(event);
 
         this.modal.hide();
 

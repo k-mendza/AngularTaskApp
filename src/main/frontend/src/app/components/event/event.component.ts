@@ -13,7 +13,4 @@ export class EventComponent {
   handleDeleteClick() {
     this.deleteEventInstanceEvent.emit(this.value);
   }
-
-
-
 }
